@@ -111,10 +111,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                           <h6><?php echo $row2['price']."$" ?></h6>
                           <p><?php echo $row2['description'] ?></p>
                           <h5>Quatity: <?php echo $row2['quantity'] ?>&nbsp&nbsp
-                            <!-- <a href=< echo "php/addtocard.php?pid=".$row2['id'] ?>>Add to card</a> -->
-                            <div class="contact-form">
-                               <button type="button" id="addtc" class="filled-button" name="addtc">Add to card</button>
-                            </div>
+                            <a href=<?php echo "php/addtocard.php?pid=".$row2['id'] ?>>Add to card</a>
                           </h5>
                         </div>
                       </div>
