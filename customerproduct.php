@@ -110,7 +110,12 @@ https://templatemo.com/tm-546-sixteen-clothing
                           <a href=""><h4><?php echo $row2['name'] ?></h4></a>
                           <h6><?php echo $row2['price']."$" ?></h6>
                           <p><?php echo $row2['description'] ?></p>
-                          <h5>Quatity: <?php echo $row2['quantity'] ?>&nbsp&nbsp<a href=<?php echo "php/addtocard.php?pid=".$row2['id'] ?>>Add to card</a></h5>
+                          <h5>Quatity: <?php echo $row2['quantity'] ?>&nbsp&nbsp
+                            <!-- <a href=< echo "php/addtocard.php?pid=".$row2['id'] ?>>Add to card</a> -->
+                            <div class="contact-form">
+                               <button type="button" id="addtc" class="filled-button" name="addtc">Add to card</button>
+                            </div>
+                          </h5>
                         </div>
                       </div>
                     </div>
@@ -158,6 +163,7 @@ https://templatemo.com/tm-546-sixteen-clothing
     <script src="assets/js/isotope.js"></script>
     <script src="assets/js/accordions.js"></script>
     <script src="assets/js/logout.js"></script>
+    <script src="assets/js/cp.js.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 
 
