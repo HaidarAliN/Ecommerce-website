@@ -70,7 +70,7 @@ https://templatemo.com/tm-546-sixteen-clothing
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Ecommerce <em>Services</em></h2></a>
+          <span class="navbar-brand" ><h2>Ecommerce <em>Services</em></h2></span>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -84,6 +84,9 @@ https://templatemo.com/tm-546-sixteen-clothing
               <li class="nav-item">
                 <a class="nav-link" href="products.php">Your Products</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="owenerselling.php">Your seled items</a>
+              </li>
              <li class="nav-item">
                 <a class="nav-link"  id="logout">Sign out</a>
               </li>
@@ -96,26 +99,12 @@ https://templatemo.com/tm-546-sixteen-clothing
     <!-- Page Content -->
     <!-- Banner Starts Here -->
     <div class="banner header-text">
-      <div class="owl-banner owl-carousel">
         <div class="banner-item-01">
           <div class="text-content">
             <h4>Welcome</h4>
             <h2>Here you can upload your products</h2>
           </div>
         </div>
-        <div class="banner-item-02">
-          <div class="text-content">
-            <h4>Flash Deals</h4>
-            <h2>Get your best products</h2>
-          </div>
-        </div>
-        <div class="banner-item-03">
-          <div class="text-content">
-            <h4>Last Minute</h4>
-            <h2>Grab last minute deals</h2>
-          </div>
-        </div>
-      </div>
     </div>
     <!-- Banner Ends Here -->
 

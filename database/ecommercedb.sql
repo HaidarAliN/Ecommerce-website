@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2021 at 11:13 PM
+-- Generation Time: Sep 06, 2021 at 06:07 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -43,13 +43,19 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `name`, `quantity`, `shop_id`, `price`, `image_path`, `category`, `description`) VALUES
-(27, 'rose1', 5, 11, 0, 'images/flower.jpg', 'flowers', 'qwe qe qwe'),
-(29, 'rose2', 7, 11, 0, 'images/flower2.jpg', 'flowers', 'fd asd a'),
-(30, 'laptop', 6, 12, 0, 'images/speech.jpeg', 'electronics', 'ewq eqwe qwe'),
-(31, 'lenovo laptop', 3, 12, 0, 'images/speech.jpeg', 'electronics', 'verry good'),
-(33, 'toshiba', 16, 12, 0, 'images/speech.jpeg', 'electronics', '2020 edition'),
-(35, 'la rose', 12, 13, 0, 'images/flower.jpg', 'flowers', 'new newn ew'),
-(36, 'la rose 2', 6, 13, 0, 'images/flower2.jpg', 'flowers', 'new new');
+(27, 'rose1', 2, 11, 5, 'images/flower.jpg', 'flowers', 'qwe qe qwe'),
+(29, 'rose2', 5, 11, 5, 'images/flower2.jpg', 'flowers', 'fd asd a'),
+(30, 'laptop', 6, 12, 5, 'images/speech.jpeg', 'electronics', 'ewq eqwe qwe'),
+(31, 'lenovo laptop', 2, 12, 5, 'images/speech.jpeg', 'electronics', 'verry good'),
+(33, 'toshiba', 16, 12, 5, 'images/speech.jpeg', 'electronics', '2020 edition'),
+(35, 'la rose', 12, 13, 5, 'images/flower.jpg', 'flowers', 'new newn ew'),
+(36, 'la rose 2', 6, 13, 5, 'images/flower2.jpg', 'flowers', 'new new'),
+(38, 'rose3', 12, 11, 5, 'images/flower2.jpg', 'flowers', 'New to stock'),
+(39, 'photo1', 4, 16, 5, 'images/team_02.jpg', 'Photography', 'My first photo'),
+(40, 'photo2', 10, 16, 5, 'images/team_05.jpg', 'Photography', 'My second photo'),
+(41, 'photo3', 6, 16, 5, 'images/team_06.jpg', 'Photography', 'My third photo'),
+(42, 'photo4', 7, 16, 5, 'images/team_01.jpg', 'Photography', 'My fourth photo'),
+(43, 'Imac', 3, 14, 5, 'images/speech.jpeg', 'electronics', '2019 edition');
 
 -- --------------------------------------------------------
 
@@ -82,7 +88,13 @@ INSERT INTO `items_in_receipt` (`receipt_id`, `item_id`) VALUES
 (8, 30),
 (8, 27),
 (9, 27),
-(9, 33);
+(9, 33),
+(10, 31),
+(10, 27),
+(11, 27),
+(11, 29),
+(12, 29),
+(13, 27);
 
 -- --------------------------------------------------------
 
@@ -109,7 +121,11 @@ INSERT INTO `receipts` (`id`, `user_id`, `status`) VALUES
 (6, 17, 1),
 (7, 17, 1),
 (8, 17, 1),
-(9, 17, 1);
+(9, 17, 1),
+(10, 17, 1),
+(11, 17, 1),
+(12, 17, 1),
+(13, 17, 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +149,8 @@ INSERT INTO `shops` (`id`, `user_id`, `name`, `category`, `image_path`) VALUES
 (11, 16, 'Rose', 'flowers', 'images/flower.jpg'),
 (12, 18, 'High speed', 'electronics', 'images/speech.jpeg'),
 (13, 19, 'eat vit', 'food', 'images/food.jpg'),
-(14, 20, 'Ishop', 'electronics', 'images/speech.jpeg');
+(14, 20, 'Ishop', 'electronics', 'images/speech.jpeg'),
+(16, 23, 'Photo Artist', 'Photography', 'images/team_04.jpg');
 
 -- --------------------------------------------------------
 
@@ -161,7 +178,8 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `type
 (18, 'ro2a', 'makke', 'shopowner2@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 1, 'nabaiteh'),
 (19, 'Charbel', 'Nehme', 'shopowner3@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 1, 'nabaiteh'),
 (20, 'zainab', 'darwish', 'shopowner4@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 1, 'nabaiteh'),
-(21, 'Charbel', 'makke', 'customer1@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 0, 'nabaiteh');
+(21, 'Charbel', 'makke', 'customer1@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 0, 'nabaiteh'),
+(23, 'hassan', 'nehme', 'shopowner5@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 1, 'nabaiteh');
 
 --
 -- Indexes for dumped tables
@@ -199,25 +217,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `shops`
 --
 ALTER TABLE `shops`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

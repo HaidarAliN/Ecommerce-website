@@ -1,11 +1,9 @@
 <?php
-  session_start();
+session_start();
   if(empty($_SESSION["id"])){
     header('location: login.html');
   }
-$_SESSION["shopid"] = $_GET['sid']; 
-include "php/cshopproduct.php";
-include "php/gotoshop.php";
+include "php/selectseleditem.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,12 +58,15 @@ https://templatemo.com/tm-546-sixteen-clothing
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="customerhome.php">Home
                 </a>
               </li> 
-              <li class="nav-item">
-                <a class="nav-link" href="card.php">Your card</a>
+                 <li class="nav-item">
+                <a class="nav-link" href="products.php">Your Products</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="ownerselling.php">Your seled items</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link"  id="logout">Sign out</a>
@@ -82,8 +83,8 @@ https://templatemo.com/tm-546-sixteen-clothing
         <div class="row">
           <div class="col-md-12">
             <div class="text-content">
-              <h4>new arrivals</h4>
-              <h2><?php echo $row["name"];?> products</h2>
+              <h4>Your Card</h4>
+              <h2>Check your purchases</h2>
             </div>
           </div>
         </div>
@@ -93,46 +94,65 @@ https://templatemo.com/tm-546-sixteen-clothing
     
     <div class="products">
       <div class="container">
-          <div class="col-md-12">
-            <div class="filters-content">
-               <?php 
-               $x = 0;
-                  while($row2 = $result2->fetch_assoc()){
-
-                    if($x % 3 == 0){
-                  ?>
-                <div class="row grid">
-                <?php } ?>
-                    <div class="col-lg-4 col-md-4 all des">
-                      <div class="product-item">
-                        <img src='<?php echo $row2['image_path']; ?>' alt="">
-                        <div class="down-content">
-                          <h4><?php echo $row2['name'] ?></h4>
-                          <h6><?php echo $row2['price']."$" ?></h6>
-                          <p><?php echo $row2['description'] ?></p>
-                          <h5>Quatity: <?php echo $row2['quantity'] ?>&nbsp&nbsp
-                            <a href=<?php echo "php/addtocard.php?pid=".$row2['id'] ?>>Add to card</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <?php
-                    if(($x+1) % 3 == 0){
-                      ?>
-                    </div>
-                    <?php
-                  }
-                  $x = $x + 1;
-                  }
-                  ?>
-                    
-                </div>
-            </div>
-          </div>
-          
-        </div>
+<?php 
+$counter = 1;
+if($flag){
+  ?>
+  <div class="row text-content">
+              <div class="col-md-12">
+                <div class="text-content text-center">
+  <h3>You didn't sell any items yet</h3>
+</div>
+</div>
+</div>
+  <?php 
+}
+else
+{
+?>
+                    <table class="table">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Item Name</th>
+                          <th scope="col">Number of items sold</th>
+                          <th scope="col">Total price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php 
+                        $total_earning = 0;
+                        do{
+                         $total_earning +=  $row2['totalprice'];
+                        ?>
+                        <tr>
+                          <th scope="row">
+                            <?php echo $counter ?>
+                          </th>
+                          <td>
+                            <?php echo $row2['name'] ?>
+                          </td>
+                          <td>
+                            <?php echo $row2['countn']." items" ?>
+                          </td>
+                          <td>
+                            <?php echo $row2['totalprice']."$" ?>
+                          </td>
+                        </tr>
+                     <?php  
+                     $counter +=1;
+                   }while($row2 = $result1->fetch_assoc()); 
+                   ?>
+                      </tbody>
+                    </table>
+                    <div class="alert-success">
+                    <h5 class="text-center">Your total earning is : <?php echo $total_earning."$"; ?></h5></div>
+                  <?php 
+                    }
+                    ?>
       </div>
     </div>
+
 
     
     <footer>
@@ -160,7 +180,6 @@ https://templatemo.com/tm-546-sixteen-clothing
     <script src="assets/js/isotope.js"></script>
     <script src="assets/js/accordions.js"></script>
     <script src="assets/js/logout.js"></script>
-    <script src="assets/js/cp.js.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 
 

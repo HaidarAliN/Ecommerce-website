@@ -51,7 +51,7 @@ https://templatemo.com/tm-546-sixteen-clothing
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>Ecommerce <em>Services</em></h2></a>
+          <span class="navbar-brand" ><h2>Ecommerce <em>Services</em></h2></span>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -66,7 +66,10 @@ https://templatemo.com/tm-546-sixteen-clothing
                 <a class="nav-link" href="products.html">Your Products</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="php/logout.php">Log Out</a>
+                <a class="nav-link" href="owenerselling.php">Your seled items</a>
+              </li>
+             <li class="nav-item">
+                <a class="nav-link"  id="logout">Sign out</a>
               </li>
             </ul>
           </div>
@@ -103,9 +106,9 @@ https://templatemo.com/tm-546-sixteen-clothing
                 <?php } ?>
                     <div class="col-lg-4 col-md-4 all des">
                       <div class="product-item">
-                        <a href=""><img src='<?php echo $row['image_path']; ?>' alt=""></a>
+                        <img src='<?php echo $row['image_path']; ?>' alt="">
                         <div class="down-content">
-                          <a href=""><h4><?php echo $row['name'] ?></h4></a>
+                          <h4><?php echo $row['name'] ?></h4>
                           <h6><?php echo $row['price']."$" ?></h6>
                           <p><?php echo $row['description'] ?></p>
                           <h5>Quatity: <?php echo $row['quantity'] ?>&nbsp&nbsp<a href=<?php echo "php/deleteproduct.php?pid=".$row['id'] ?>>Delete Product</a></h5>

@@ -84,7 +84,7 @@ submitElement.addEventListener("click", function () {
     derror.innerHTML = "";
   }
 
-  if (imageVal && pnValid && dValid && qValid && cValid && dValid){
+  if (imageVal && pnValid && dValid && qValid && cValid && pValid){
   formElement.submit();
   }
 });
