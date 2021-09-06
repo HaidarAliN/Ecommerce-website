@@ -108,10 +108,16 @@ https://templatemo.com/tm-546-sixteen-clothing
                       <div class="product-item">
                         <img src='<?php echo $row['image_path']; ?>' alt="">
                         <div class="down-content">
+                          <input type="hidden" id=<?php echo "p".$x ?> name="custId" value=<?php echo  $row['id'] ?>>
                           <h4><?php echo $row['name'] ?></h4>
                           <h6><?php echo $row['price']."$" ?></h6>
                           <p><?php echo $row['description'] ?></p>
-                          <h5>Quatity: <?php echo $row['quantity'] ?>&nbsp&nbsp<a href=<?php echo "php/deleteproduct.php?pid=".$row['id'] ?>>Delete Product</a></h5>
+                          <h5 id=<?php echo  "quan".$x ?>>Quantity: <?php echo $row['quantity'] ?></h5>
+
+                        </br><p>Add more of this item:</p>
+                          <input type="text" class="form-control" placeholder="1 ~ 100" id=<?php echo "num".$x ?>></br>
+                        <button type="button" class="btn btn-outline-primary" id=<?php echo "confirm".$x;  ?>>Confirm adding</button>
+                        <a href=<?php echo "php/deleteproduct.php?pid=".$row['id'] ?>>Delete Product</a>
                         </div>
                       </div>
                     </div>
@@ -159,6 +165,7 @@ https://templatemo.com/tm-546-sixteen-clothing
     <script src="assets/js/isotope.js"></script>
     <script src="assets/js/accordions.js"></script>
     <script src="assets/js/logout.js"></script>
+    <script src="assets/js/products.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 
 
