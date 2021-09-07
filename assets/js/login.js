@@ -9,11 +9,13 @@ var passerrorElement = document.getElementById("passerror");
 
 var emailValid;
 var confirmPass;
+var emailexist;
 
 
 submitElement.addEventListener("click", function () {
 	validateEmail();
 	confirmPassword();
+
 
 		if(!emailValid){
     emailerrorElement.innerHTML="Please enter a valid email";
@@ -21,6 +23,7 @@ submitElement.addEventListener("click", function () {
     element.classList.add("alert-danger");
     element.classList.add("alert");
   }else{
+     $.fn.myFunction();
     var element = document.getElementById("validemail");
     element.classList.remove("alert-danger");
     emailerrorElement.innerHTML="";
@@ -37,7 +40,7 @@ submitElement.addEventListener("click", function () {
     passerrorElement.innerHTML="";
   }
 
-	  if(emailValid && confirmPass){
+	  if(emailValid && confirmPass &&  emailexist){
 	formElement.submit();
 }
 });
@@ -60,3 +63,23 @@ function confirmPassword() {
     confirmPass = true;
   }
 }
+
+$(document).ready(function(){
+    $.fn.myFunction = function(){
+  var x = "'"+emailElement.value +"'";
+  $.post("php/checkemailapi.php",
+          {
+          email: x
+          }, function(data){
+            data = $.parseJSON( data );
+                   if(data[0]['response'] == 1){
+                      emailexist = true;
+                      $('#head').html("Enter your information");
+                   }else{
+                    emailexist = false;
+                      $('#head').html("This email does not exist");
+
+                   }
+                });
+}
+});
