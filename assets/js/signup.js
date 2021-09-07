@@ -139,7 +139,7 @@ $(document).ready(function(){
             data = $.parseJSON( data );
                    if(data[0]['response'] == 1){
                       emailexist = false;
-                      $('#head').html("This email does not exist");
+                      $('#head').html("This email already exist");
                    }else{
                     emailexist = true;
                       $('#head').html("Enter your information");
