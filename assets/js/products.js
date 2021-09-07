@@ -1,5 +1,7 @@
 $(document).ready(function(){
   $("button").click(function(){
+    var id = $(this).attr('id').slice(0,-1);
+    if (id == "confirm"){
     if(confirm('Are you sure you want to add?'))
     {
     	var x = $(this).attr('id');
@@ -29,5 +31,6 @@ $(document).ready(function(){
     	}
 
     }
+}
   });
 });
