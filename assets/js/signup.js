@@ -19,6 +19,7 @@ var fnameValid;
 var lnameValid;
 var confirmPass;
 var addressValid;
+var emailexist;
 
 submitElement.addEventListener("click", function () {
 	validateEmail()
@@ -33,6 +34,7 @@ submitElement.addEventListener("click", function () {
     element.classList.add("alert-danger");
     element.classList.add("alert");
   }else{
+    $.fn.myFunction();
     var element = document.getElementById("validemail");
     element.classList.remove("alert-danger");
     emailerror.innerHTMemail="";
@@ -82,7 +84,7 @@ submitElement.addEventListener("click", function () {
     cpasserror.innerHTML = "";
   }
 
-  if(emailValid &&lnameValid && addressValid && confirmPass &&  fnameValid){
+  if(emailValid &&lnameValid && addressValid && confirmPass &&  fnameValid && emailexist){
 	formElement.submit();
 }
 });
@@ -126,3 +128,23 @@ function validateaddress(){
     addressValid = true;
   }
 }
+
+$(document).ready(function(){
+    $.fn.myFunction = function(){
+  var x = "'"+emailElement.value +"'";
+  $.post("php/checkemailapi.php",
+          {
+          email: x
+          }, function(data){
+            data = $.parseJSON( data );
+                   if(data[0]['response'] == 1){
+                      emailexist = false;
+                      $('#head').html("This email does not exist");
+                   }else{
+                    emailexist = true;
+                      $('#head').html("Enter your information");
+
+                   }
+                });
+}
+});
