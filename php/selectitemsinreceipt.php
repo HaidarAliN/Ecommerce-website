@@ -10,7 +10,7 @@ $id = $_SESSION["id"];
 if(!empty($row1)){
 $flag = false;
 $rid = $row1['id'];
-		$sql2="SELECT * FROM `items_in_receipt` as ir ,`items` as i , `receipts` as r where ir.receipt_id = r.id and ir.item_id = i.id and ir.receipt_id=$rid and r.status = 0"; 
+		$sql2="SELECT * FROM `items_in_receipt` as ir ,`items` as i , `receipts` as r where ir.receipt_id = r.id and ir.item_id = i.id and ir.receipt_id=$rid and r.status = 0 and i.quantity > 0 "; 
 		$stmt2 = $connection->prepare($sql2);
 		$stmt2->execute();
 		$result2 = $stmt2->get_result();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2021 at 06:07 PM
+-- Generation Time: Sep 07, 2021 at 07:03 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -35,27 +35,29 @@ CREATE TABLE `items` (
   `price` int(11) NOT NULL,
   `image_path` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
-  `description` varchar(10000) NOT NULL
+  `description` varchar(10000) NOT NULL,
+  `active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`id`, `name`, `quantity`, `shop_id`, `price`, `image_path`, `category`, `description`) VALUES
-(27, 'rose1', 2, 11, 5, 'images/flower.jpg', 'flowers', 'qwe qe qwe'),
-(29, 'rose2', 5, 11, 5, 'images/flower2.jpg', 'flowers', 'fd asd a'),
-(30, 'laptop', 6, 12, 5, 'images/speech.jpeg', 'electronics', 'ewq eqwe qwe'),
-(31, 'lenovo laptop', 2, 12, 5, 'images/speech.jpeg', 'electronics', 'verry good'),
-(33, 'toshiba', 16, 12, 5, 'images/speech.jpeg', 'electronics', '2020 edition'),
-(35, 'la rose', 12, 13, 5, 'images/flower.jpg', 'flowers', 'new newn ew'),
-(36, 'la rose 2', 6, 13, 5, 'images/flower2.jpg', 'flowers', 'new new'),
-(38, 'rose3', 12, 11, 5, 'images/flower2.jpg', 'flowers', 'New to stock'),
-(39, 'photo1', 4, 16, 5, 'images/team_02.jpg', 'Photography', 'My first photo'),
-(40, 'photo2', 10, 16, 5, 'images/team_05.jpg', 'Photography', 'My second photo'),
-(41, 'photo3', 6, 16, 5, 'images/team_06.jpg', 'Photography', 'My third photo'),
-(42, 'photo4', 7, 16, 5, 'images/team_01.jpg', 'Photography', 'My fourth photo'),
-(43, 'Imac', 3, 14, 5, 'images/speech.jpeg', 'electronics', '2019 edition');
+INSERT INTO `items` (`id`, `name`, `quantity`, `shop_id`, `price`, `image_path`, `category`, `description`, `active`) VALUES
+(27, 'rose1', 5, 11, 5, 'images/flower.jpg', 'flowers', 'qwe qe qwe', 1),
+(29, 'rose2', 4, 11, 5, 'images/flower2.jpg', 'flowers', 'fd asd a', 1),
+(30, 'laptop', 17, 12, 5, 'images/speech.jpeg', 'electronics', 'ewq eqwe qwe', 1),
+(31, 'lenovo laptop', 3, 12, 5, 'images/speech.jpeg', 'electronics', 'verry good', 1),
+(33, 'toshiba', 31, 12, 5, 'images/speech.jpeg', 'electronics', '2020 edition', 1),
+(35, 'la rose', 12, 13, 5, 'images/flower.jpg', 'flowers', 'new newn ew', 1),
+(36, 'la rose 2', 6, 13, 5, 'images/flower2.jpg', 'flowers', 'new new', 1),
+(38, 'rose3', 12, 11, 5, 'images/flower2.jpg', 'flowers', 'New to stock', 1),
+(39, 'photo1', 4, 16, 5, 'images/team_02.jpg', 'Photography', 'My first photo', 1),
+(40, 'photo2', 10, 16, 5, 'images/team_05.jpg', 'Photography', 'My second photo', 1),
+(41, 'photo3', 6, 16, 5, 'images/team_06.jpg', 'Photography', 'My third photo', 1),
+(42, 'photo4', 7, 16, 5, 'images/team_01.jpg', 'Photography', 'My fourth photo', 1),
+(43, 'Imac', 3, 14, 5, 'images/speech.jpeg', 'electronics', '2019 edition', 1),
+(44, 'rose4', 2, 11, 5, 'images/flower2.jpg', 'flowers', 'new flower to the shop', 0);
 
 -- --------------------------------------------------------
 
@@ -94,7 +96,16 @@ INSERT INTO `items_in_receipt` (`receipt_id`, `item_id`) VALUES
 (11, 27),
 (11, 29),
 (12, 29),
-(13, 27);
+(13, 27),
+(14, 27),
+(14, 29),
+(15, 27),
+(16, 27),
+(17, 27),
+(18, 27),
+(18, 27),
+(19, 27),
+(20, 27);
 
 -- --------------------------------------------------------
 
@@ -125,7 +136,14 @@ INSERT INTO `receipts` (`id`, `user_id`, `status`) VALUES
 (10, 17, 1),
 (11, 17, 1),
 (12, 17, 1),
-(13, 17, 1);
+(13, 17, 1),
+(14, 17, 1),
+(15, 17, 1),
+(16, 17, 1),
+(17, 17, 1),
+(18, 17, 1),
+(19, 17, 1),
+(20, 17, 0);
 
 -- --------------------------------------------------------
 
@@ -181,6 +199,26 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `type
 (21, 'Charbel', 'makke', 'customer1@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 0, 'nabaiteh'),
 (23, 'hassan', 'nehme', 'shopowner5@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 1, 'nabaiteh');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_liked_items`
+--
+
+CREATE TABLE `users_liked_items` (
+  `user_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users_liked_items`
+--
+
+INSERT INTO `users_liked_items` (`user_id`, `item_id`) VALUES
+(17, 29),
+(17, 38),
+(21, 27);
+
 --
 -- Indexes for dumped tables
 --
@@ -217,13 +255,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `shops`

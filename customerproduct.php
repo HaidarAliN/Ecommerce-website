@@ -95,6 +95,8 @@ https://templatemo.com/tm-546-sixteen-clothing
       <div class="container">
           <div class="col-md-12">
             <div class="filters-content">
+            <input type="hidden" id="uid" name="custId" value=<?php echo  $_SESSION["id"]; ?>>
+
                <?php 
                $x = 0;
                   while($row2 = $result2->fetch_assoc()){
@@ -112,7 +114,18 @@ https://templatemo.com/tm-546-sixteen-clothing
                           <p><?php echo $row2['description'] ?></p>
                           <h5>Quatity: <?php echo $row2['quantity'] ?>&nbsp&nbsp
                             <a href=<?php echo "php/addtocard.php?pid=".$row2['id'] ?>>Add to card</a>
-                          </h5>
+                          </h5></br></br>
+                          <?php 
+                          $id = $row2['id'];
+                              $sql3="Select count(item_id) as count from users_liked_items where item_id=".$id; 
+                              $stmt3 = $connection->prepare($sql3);
+                              $stmt3->execute();
+                              $result3 = $stmt3->get_result();
+                              $row3 = $result3->fetch_assoc()                          
+                          ?>
+                          <input type="hidden" id=<?php echo "item".$x; ?> name="custId" value=<?php echo  $row2['id'] ?>>
+                          <span ><strong id=<?php echo "likenum".$x; ?>><?php echo $row3['count'] ?></strong> likes&nbsp<button type="button" id=<?php echo "btnlike".$x;  ?> class="fa fa-thumbs-up btn btn-danger"></button>
+                            <button type="button" id=<?php echo "btnunlike".$x;  ?> class="fa fa-thumbs-down btn btn-danger"></button></span>
                         </div>
                       </div>
                     </div>
@@ -160,7 +173,7 @@ https://templatemo.com/tm-546-sixteen-clothing
     <script src="assets/js/isotope.js"></script>
     <script src="assets/js/accordions.js"></script>
     <script src="assets/js/logout.js"></script>
-    <script src="assets/js/cp.js.js"></script>
+    <script src="assets/js/cp.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 
 

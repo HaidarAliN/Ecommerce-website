@@ -108,7 +108,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                       <div class="product-item">
                         <img src='<?php echo $row['image_path']; ?>' alt="">
                         <div class="down-content">
-                          <input type="hidden" id=<?php echo "p".$x ?> name="custId" value=<?php echo  $row['id'] ?>>
+                          <input type="hidden" id=<?php echo "p".$x; ?> name="custId" value=<?php echo  $row['id'] ?>>
                           <h4><?php echo $row['name'] ?></h4>
                           <h6><?php echo $row['price']."$" ?></h6>
                           <p><?php echo $row['description'] ?></p>

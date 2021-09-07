@@ -10,7 +10,7 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $receipt_id = $row['id']; //get the id of the receipt
 
-$sql2="SELECT item_id FROM `items_in_receipt` WHERE receipt_id = $receipt_id";
+$sql2="SELECT ir.item_id FROM `items_in_receipt` as ir, `items` as i  WHERE i.id = ir.item_id and ir.receipt_id = $receipt_id and i.quantity > 0";
 $stmt2 = $connection->prepare($sql2);
 $stmt2->execute();
 $result2 = $stmt2->get_result();
@@ -31,6 +31,7 @@ foreach ($item_id_arr as $value) {
 
 foreach ($item_id_arr as $key => $value) {
 	$new_quantity = $current_quantity[$key] - 1;
+	if ($new_quantity<0) {$new_quantity = 0;}
 	$sql4 = "UPDATE `items` SET `quantity`=$new_quantity WHERE id = $value";
 	$stmt4 = $connection->prepare($sql4);
 	$stmt4->execute();
