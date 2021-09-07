@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2021 at 09:51 PM
+-- Generation Time: Sep 07, 2021 at 10:14 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -44,10 +44,10 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `name`, `quantity`, `shop_id`, `price`, `image_path`, `category`, `description`, `active`) VALUES
-(27, 'rose1', 2, 11, 5, 'images/flower.jpg', 'flowers', 'qwe qe qwe', 1),
+(27, 'rose1', 5, 11, 5, 'images/flower.jpg', 'flowers', 'qwe qe qwe', 1),
 (29, 'rose2', 4, 11, 5, 'images/flower2.jpg', 'flowers', 'fd asd a', 1),
 (30, 'laptop', 2, 12, 5, 'images/speech.jpeg', 'electronics', 'ewq eqwe qwe', 1),
-(31, 'lenovo laptop', 3, 12, 5, 'images/speech.jpeg', 'electronics', 'verry good', 1),
+(31, 'lenovo laptop', 2, 12, 5, 'images/speech.jpeg', 'electronics', 'verry good', 1),
 (33, 'toshiba', 31, 12, 5, 'images/speech.jpeg', 'electronics', '2020 edition', 1),
 (35, 'la rose', 12, 13, 5, 'images/flower.jpg', 'flowers', 'new newn ew', 1),
 (36, 'la rose 2', 6, 13, 5, 'images/flower2.jpg', 'flowers', 'new new', 1),
@@ -108,7 +108,8 @@ INSERT INTO `items_in_receipt` (`receipt_id`, `item_id`) VALUES
 (20, 27),
 (20, 30),
 (21, 27),
-(21, 27);
+(21, 27),
+(22, 31);
 
 -- --------------------------------------------------------
 
@@ -148,7 +149,8 @@ INSERT INTO `receipts` (`id`, `user_id`, `status`, `date`) VALUES
 (18, 17, 1, '2021-11-09'),
 (19, 17, 1, '2021-11-09'),
 (20, 17, 1, '2021-01-23'),
-(21, 17, 1, '2021-09-07');
+(21, 17, 1, '2021-09-07'),
+(22, 17, 1, '2021-09-07');
 
 -- --------------------------------------------------------
 
@@ -196,12 +198,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `type`, `address`) VALUES
-(16, 'Haidar Ali', 'Nehme', 'sizito97germany@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 1, 'nabaiteh'),
-(17, 'mhmd', 'nehme', 'sizito_germany@hotmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 0, 'nabaiteh'),
+(16, 'Haidar Ali', 'Nehme', 'shopowner1@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 1, 'nabaiteh'),
+(17, 'mhmd', 'nehme', 'customer1@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 0, 'nabaiteh'),
 (18, 'ro2a', 'makke', 'shopowner2@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 1, 'nabaiteh'),
 (19, 'Charbel', 'Nehme', 'shopowner3@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 1, 'nabaiteh'),
 (20, 'zainab', 'darwish', 'shopowner4@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 1, 'nabaiteh'),
-(21, 'Charbel', 'makke', 'customer1@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 0, 'nabaiteh'),
+(21, 'Charbel', 'makke', 'customer2@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 0, 'nabaiteh'),
 (23, 'hassan', 'nehme', 'shopowner5@gmail.com', '3cc849279ba298b587a34cabaeffc5ecb3a044bbf97c516fab7ede9d1af77cfa', 1, 'nabaiteh');
 
 -- --------------------------------------------------------
@@ -220,13 +222,11 @@ CREATE TABLE `users_liked_items` (
 --
 
 INSERT INTO `users_liked_items` (`user_id`, `item_id`) VALUES
-(17, 29),
-(17, 38),
 (21, 27),
 (21, 30),
+(17, 30),
 (17, 31),
-(17, 33),
-(17, 30);
+(17, 33);
 
 --
 -- Indexes for dumped tables
@@ -270,7 +270,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `shops`
