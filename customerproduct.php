@@ -112,7 +112,7 @@ https://templatemo.com/tm-546-sixteen-clothing
                           <h4><?php echo $row2['name'] ?></h4>
                           <h6><?php echo $row2['price']."$" ?></h6>
                           <p><?php echo $row2['description'] ?></p>
-                          <h5>Quatity: <?php echo $row2['quantity'] ?>&nbsp&nbsp
+                          <h5>Quantity: <?php echo $row2['quantity'] ?>&nbsp&nbsp
                             <a href=<?php echo "php/addtocard.php?pid=".$row2['id'] ?>>Add to card</a>
                           </h5></br></br>
                           <?php 

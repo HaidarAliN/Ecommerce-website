@@ -37,7 +37,9 @@ foreach ($item_id_arr as $key => $value) {
 	$stmt4->execute();
 }
 
-$sql5 = "UPDATE `receipts` SET `status`= 1 WHERE id = $receipt_id";//delecte the item from the receit
+$time = "'".date('Y-m-d')."'";
+
+$sql5 = "UPDATE `receipts` SET `status`= 1,`date`= $time WHERE id = $receipt_id";//delecte the item from the receit
 $stmt5 = $connection->prepare($sql5);
 $stmt5->execute();
 $_SESSION["success"] = "Purchased successfully";

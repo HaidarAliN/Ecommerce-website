@@ -153,7 +153,58 @@ else
       </div>
     </div>
 
+<?php 
+$counter = 1;
+if($flag2){
+  ?>
+        <div class="products">
+      <div class="container">
+  <div class="row text-content">
+              <div class="col-md-12">
+                <div class="text-content text-center">
+</div>
+</div>
+</div>
+                    <div class="alert-success">
+                    <h5 class="text-center">Your monthly revenue:</h5></div></br></br>
+                    <table class="table">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Total earning</th>
+                          <th scope="col">Month</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php 
+                        do{
+                        ?>
+                        <tr>
+                          <th scope="row">
+                            <?php echo $counter ?>
+                          </th>
+                          <td>
+                            <?php echo $row3['totalprice']." $" ?>
+                          </td>
+                          <td>
+                            <?php $monthNum = $row3['month'];
+                            $dateObj   = DateTime::createFromFormat('!m', $monthNum);
+                            $monthName = $dateObj->format('F');
+                            echo $monthName;
+                            ?>
+                          </td>
+                        </tr>
+                     <?php  
+                     $counter +=1;
+                   }while($row3 = $result2->fetch_assoc()); 
+                   ?>
+                      </tbody>
+                    </table>
+                    <div class="alert-success">
+      </div>
+    </div>
 
+<?php }?>
     
     <footer>
       <div class="container">

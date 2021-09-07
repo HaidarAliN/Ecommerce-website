@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2021 at 07:03 PM
+-- Generation Time: Sep 07, 2021 at 09:51 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -44,9 +44,9 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `name`, `quantity`, `shop_id`, `price`, `image_path`, `category`, `description`, `active`) VALUES
-(27, 'rose1', 5, 11, 5, 'images/flower.jpg', 'flowers', 'qwe qe qwe', 1),
+(27, 'rose1', 2, 11, 5, 'images/flower.jpg', 'flowers', 'qwe qe qwe', 1),
 (29, 'rose2', 4, 11, 5, 'images/flower2.jpg', 'flowers', 'fd asd a', 1),
-(30, 'laptop', 17, 12, 5, 'images/speech.jpeg', 'electronics', 'ewq eqwe qwe', 1),
+(30, 'laptop', 2, 12, 5, 'images/speech.jpeg', 'electronics', 'ewq eqwe qwe', 1),
 (31, 'lenovo laptop', 3, 12, 5, 'images/speech.jpeg', 'electronics', 'verry good', 1),
 (33, 'toshiba', 31, 12, 5, 'images/speech.jpeg', 'electronics', '2020 edition', 1),
 (35, 'la rose', 12, 13, 5, 'images/flower.jpg', 'flowers', 'new newn ew', 1),
@@ -105,7 +105,10 @@ INSERT INTO `items_in_receipt` (`receipt_id`, `item_id`) VALUES
 (18, 27),
 (18, 27),
 (19, 27),
-(20, 27);
+(20, 27),
+(20, 30),
+(21, 27),
+(21, 27);
 
 -- --------------------------------------------------------
 
@@ -116,34 +119,36 @@ INSERT INTO `items_in_receipt` (`receipt_id`, `item_id`) VALUES
 CREATE TABLE `receipts` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `status` tinyint(4) NOT NULL
+  `status` tinyint(4) NOT NULL,
+  `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `receipts`
 --
 
-INSERT INTO `receipts` (`id`, `user_id`, `status`) VALUES
-(1, 17, 1),
-(2, 17, 1),
-(3, 17, 1),
-(4, 17, 1),
-(5, 17, 1),
-(6, 17, 1),
-(7, 17, 1),
-(8, 17, 1),
-(9, 17, 1),
-(10, 17, 1),
-(11, 17, 1),
-(12, 17, 1),
-(13, 17, 1),
-(14, 17, 1),
-(15, 17, 1),
-(16, 17, 1),
-(17, 17, 1),
-(18, 17, 1),
-(19, 17, 1),
-(20, 17, 0);
+INSERT INTO `receipts` (`id`, `user_id`, `status`, `date`) VALUES
+(1, 17, 1, '2021-01-09'),
+(2, 17, 1, '2021-01-09'),
+(3, 17, 1, '2021-01-09'),
+(4, 17, 1, '2021-01-09'),
+(5, 17, 1, '2021-05-09'),
+(6, 17, 1, '2021-06-09'),
+(7, 17, 1, '2021-07-09'),
+(8, 17, 1, '2021-08-09'),
+(9, 17, 1, '2021-02-09'),
+(10, 17, 1, '2021-08-09'),
+(11, 17, 1, '2021-04-09'),
+(12, 17, 1, '2021-05-09'),
+(13, 17, 1, '2021-03-09'),
+(14, 17, 1, '2021-03-09'),
+(15, 17, 1, '2021-03-09'),
+(16, 17, 1, '2021-02-09'),
+(17, 17, 1, '2021-10-09'),
+(18, 17, 1, '2021-11-09'),
+(19, 17, 1, '2021-11-09'),
+(20, 17, 1, '2021-01-23'),
+(21, 17, 1, '2021-09-07');
 
 -- --------------------------------------------------------
 
@@ -217,7 +222,11 @@ CREATE TABLE `users_liked_items` (
 INSERT INTO `users_liked_items` (`user_id`, `item_id`) VALUES
 (17, 29),
 (17, 38),
-(21, 27);
+(21, 27),
+(21, 30),
+(17, 31),
+(17, 33),
+(17, 30);
 
 --
 -- Indexes for dumped tables
@@ -261,7 +270,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `shops`
