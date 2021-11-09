@@ -13,6 +13,7 @@
 
 ![info](https://user-images.githubusercontent.com/89384538/140396747-76ea0f68-7f8a-4c9d-8c82-2fa4b9f2f8f6.png)
 - Shop owner can upload new product
+
 ![new product](https://user-images.githubusercontent.com/89384538/140396941-cc5d6489-70f5-4a25-9075-aa466344dbdc.png)
 - Shop owners can check their uploaded products and add quantity
 
